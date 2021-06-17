@@ -11,4 +11,3 @@ int main(void)
   printf("%s\n", grammar);
   return (0);
 }
-
