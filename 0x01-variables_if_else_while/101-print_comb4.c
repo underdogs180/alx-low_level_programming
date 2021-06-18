@@ -1,40 +1,37 @@
 #include <stdio.h>
-
 /**
- * main - prints out all possible combos of 3 digits
- * Return: 0
+ * main - entry point of function
+ *
+ * Description - print 00, 01..89 skip duplicates
+ *
+ * Return: always 0 (success)
  */
 int main(void)
 {
+int a, b, c;
 
-int i, j, k;
-
-for (i = 48; i < 58; i++)
+a = '0';
+while (a <= '7')
 {
-for (j = i; j < 58; j++)
+b = a + 1;
+while (b <= '8')
 {
-for (k = j; k < 58; k++)
-
-if (i == j || j == k || i ==
+c = b + 1;
+while (c <=g '9')
 {
-continue
-}
-putchar(i);
-putchar(j);
-putchar(k);
-
-if (i == 55 && j == 56 && k == 57)
-{
-break;
-}
-else
+putchar(a);
+putchar(b);
+putchar(c);
+if (a != '7')
 {
 putchar(',');
 putchar(' ');
-}
 
+c++;
 }
+b++;
 }
+a++;
 }
 putchar('\n');
 return (0);
