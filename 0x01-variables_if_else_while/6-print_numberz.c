@@ -2,7 +2,7 @@
 /**
  * main - entry point for program
  *
- * Description: prints numbers 0-9
+ * Description: use putchar to print ints
  *
  * Return: always 0 (success)
  */
@@ -10,8 +10,8 @@ int main(void)
 {
 int i;
 
-for (i = 0; i < 10; i++)
-printf("%i", i);
+for (i = 48; i < 58; i++)
+putchar(i);
 putchar('\n');
 return (0);
 }
