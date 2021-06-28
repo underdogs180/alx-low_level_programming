@@ -1,23 +1,33 @@
 #include "holberton.h"
+
 /**
- * puts_half - print second half of str
- *
- * @str: string to cut in half & print
- *
- * Return: always void
+ *puts_half - Write a function that prints half of a string
+ *@str: pointer char
+ *Return: void
  */
 void puts_half(char *str)
 {
-	int length, charsToPrint = 0;
+	int i = 0, j, tmp;
 
-	while (*(str + length) != '\0')
-		length++;
-	if (!(length % 2)) /* if uneven number */
-		charsToPrint = (length - 1) / 2;
+	while (str[i])
+		i++;
+
+	if (i % 2 == 0)
+	{
+		tmp = i / 2;
+		for (j = tmp; j < i; j++)
+		{
+			_putchar(str[j]);
+		}
+	}
 	else
-		charsToPrint = length / 2;
-	charsToPrint++;
-	while (charsToPrint < length)
-		_putchar(*(str + charsToPrint++));
+	{
+		tmp = (i + 1) / 2;
+		for (j = tmp; j < i; j++)
+		{
+			_putchar(str[j]);
+		}
+	}
+
 	_putchar('\n');
 }
