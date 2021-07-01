@@ -1,23 +1,40 @@
+char get_leet(char);
 /**
- *leet - encodes a string into 1337.
- *@s: pointer parameter character
- *Return: s variable
+ * leet - transalte to leet speak
+ *
+ * @str: string to convert
+ *
+ * Return: pointer to str
  */
-char *leet(char *s)
+char *leet(char *str)
 {
-	int i, j;
-	int arr_int[] = {4, 3, 0, 7, 1};
-	char arr_char_low[] = {'a', 'e', 'o', 't', 'l'};
-	char arr_char_up[] = {'A', 'E', 'O', 'T', 'L'};
+	char temp;
+	int i = 0;
 
-	for (i = 0; s[i]; i++)
+	while (str[i] != '\0')
 	{
-		for (j = 0; arr_char_low[j]; j++)
-		{
-			if (s[i] == arr_char_low[j] || s[i] == arr_char_up[j])
-				s[i] = arr_int[j] + '0';
-		}
+		temp = get_leet(str[i]);
+		if (temp != '\0')
+			str[i] = temp;
+		i++;
 	}
+	return (str);
+}
+/**
+ * get_leet - gets leet character for english char
+ *
+ * @nonLeet: english character to convert/check
+ *
+ * Return: char: leet version if exists, otherwise null byte
+ */
+char get_leet(char nonLeet)
+{
+	int arrSize = 10;
+	char leet[] =    {'4', '3', '0', '7', '1', '4', '3', '0', '7', '1', '\0'};
+	char english[] = {'a', 'e', 'o', 't', 'l', 'A', 'E', 'O', 'T', 'L', '\0'};
+	int i = 0;
 
-	return (s);
+	while (english[i] != nonLeet && i < arrSize)
+		i++;
+	return (leet[i]); /* i will be arrSize+1 if no english matches ch */
 }
