@@ -1,29 +1,31 @@
+/*
+ * File: 2-strncpy.c
+ * Auth: Brennan D Baraban
+ */
+
+#include "holberton.h"
+
 /**
- * _strncpy - copies string, up to n bytes
+ * _strncpy - Copies at most an inputted number
+ *            of bytes from string src into dest.
+ * @dest: The buffer storing the string copy.
+ * @src: The source string.
+ * @n: The maximum number of bytes to copied from src.
  *
- * @dest: destination str to copy into
- * @src: string to copy to dest
- * @n: number of bytes to copy from src
- *
- * Return: char pointer to beginning of dest
+ * Return: A pointer to the resulting string dest.
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	char *temp = dest;
-	int counter = 0, srcLength = 0;
+	int index = 0, src_len = 0;
 
-	if (n <= 0)
-		return (dest);
-	while (src[srcLength] != '\0')
-		srcLength++;
-	srcLength++;
-	if (n > srcLength)
-		n = srcLength;
+	while (src[index++])
+		src_len++;
 
-	while (counter < n)
-	{
-		dest[counter] = src[counter];
-		counter++;
-	}
-	return (temp);
+	for (index = 0; src[index] && index < n; index++)
+		dest[index] = src[index];
+
+	for (index = src_len; index < n; index++)
+		dest[index] = '\0';
+
+	return (dest);
 }
