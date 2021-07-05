@@ -1,1 +1,0 @@
-This project is about functions and nested loops being apart of the C launguage

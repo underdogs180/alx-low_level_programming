@@ -1,1 +1,0 @@
-We will be learning about Variables and arithmetic operators

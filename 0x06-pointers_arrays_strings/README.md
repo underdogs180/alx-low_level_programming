@@ -1,1 +1,0 @@
-In this project we will be using pointers, arrays, and strings to complete different tasks.
