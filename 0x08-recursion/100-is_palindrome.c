@@ -9,8 +9,8 @@ int _strlen_recursion(char *s);
  */
 int is_palindrome(char *s)
 {
-  char *end;
-  int sLength;
+char *end;
+int sLength;
 
 if (!*s) /* empty string */
 return (1);
