@@ -1,0 +1,1 @@
+This directory contains results of my debugging projects
