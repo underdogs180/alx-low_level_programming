@@ -36,7 +36,7 @@ return (NULL);
 r = 0;
 while (r < width)
 {
-*(*(grid + c) + r) = 0;
+*(*(grid+c)+r) = 0;
 r++;
 
 }
