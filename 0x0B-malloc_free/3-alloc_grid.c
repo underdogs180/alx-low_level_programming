@@ -24,23 +24,23 @@ return (NULL);
 c = 0;
 while (c < height)
 {
- *(grid + c) = malloc(width * sizeof(int));
+*(grid + c) = malloc(width * sizeof(int));
 
- if (!(*(grid + c)))
+if (!(*(grid + c)))
 {
 while (c--)
- free(*(grid + c));
+free(*(grid + c));
 free(grid);
 return (NULL);
 }
 r = 0;
 while (r < width)
 {
- *(*(grid + c) + r) = 0;
- r++;
+*(*(grid + c) + r) = 0;
+r++;
 
 }
- c++;
+c++;
 }
 
 return (grid);
