@@ -14,4 +14,4 @@ ret = malloc(b);
 if (ret == NULL)
 exit(98);
 return (ret);
-}
+} 
