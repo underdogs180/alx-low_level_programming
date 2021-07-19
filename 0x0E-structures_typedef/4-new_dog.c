@@ -1,68 +1,77 @@
 #include "dog.h"
+#include <stdlib.h>
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
 /**
- * _strdup - returns a pointer to space in memory containing copy of string.
- * @s: pointer to the string.
- * Return: Pointer to a string stored in memory.
- */
-char *_strdup(char *s)
-{
-char *dup;
-unsigned int i = 0;
-unsigned int j = 0;
-
-if (s == NULL)
-return (NULL);
-/*Get the length of the string.*/
-while (s[i] != '\0')
-i += 1;
-/*+1 to include the terminating character in size.*/
-i++;
-
-dup = malloc(i * sizeof(*dup));
-if (dup == NULL)
-return (NULL);
-while (j < i)
-{
-dup[j] = s[j];
-j++;
-}
-return (dup);
-}
-
-
-
-
-/**
- *new_dog - create an instance of struct dog.
- *@name:firt argument.
- *@age:second argument.
- *@owner: Third argument.
- *Return: instance of struct.
+ * new_dog - makes a new dog, memory and all
+ * @name: name to create mem and assign to for dog
+ * @age: age to assign to for dog
+ * @owner: owner to create mem and assign to for dog
+ *
+ * Return: pointer to new dog_t (struct dog)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-dog_t *newdog;
+dog_t *new_d;
 
-newdog = malloc(sizeof(struct dog));
-
-if (newdog == NULL)
+new_d = malloc(sizeof(dog_t));
+if (new_d == NULL)
 return (NULL);
-/*Assign name element of new struct to the copy of name.*/
-newdog->name = _strdup(name);
-if (newdog->name == NULL)
+if (name == NULL)
+new_d->name = NULL;
+else
 {
-free(newdog);
+new_d->name = malloc(_strlen(name) + 1);
+if (new_d->name == NULL)
+}
+free(new_d);
 return (NULL);
 }
-/*Assgin owner element of new struct to the copy of ownwer.*/
-newdog->owner = _strdup(owner);
-if (newdog->owner == NULL)
+new_d->name = _strcpy(new_d->name, name);
+}
+if (owner == NULL)
+new_d->owner = NULL;
+else
 {
-free(newdog->name);
-free(newdog);
+new_d->owner = malloc(_strlen(owner) + 1);
+if (new_d->owner == NULL)
+}
+free(new_d->name);
+free(new_d);
 return (NULL);
 }
-newdog->age = age;
+new_d->owner = _strcpy(new_d->owner, owner);
+}
+new_d->age = age;
+return (new_d);
+}
+/**
+ * _strlen - gets len of str
+ * @s: string to get length of
+ *
+ * Return: length of s
+ */
+int _strlen(char *s)
+{
+int i = 0;
 
-return (newdog);
+for (i = 0; s[i]; i++)
+;
+return (i);
+}
+/**
+ * _strcpy - copies string from src to dest
+ *
+ * @dest: pointer to destination of string
+ * @src: pointer to source string to copy from
+ *
+ * Return: pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
+{
+char *temp = dest;
+
+while (*src)*temp++ = *src++;
+*temp = '\0';
+return (dest);
 }
