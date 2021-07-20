@@ -1,24 +1,20 @@
-#include <stdlib.h>
+#include "function_pointers.h"
+
 /**
- * int_index - gets the index of an array element
- * @array: array to search through
- * @size: size of array (num of elements)
- * @cmp: comparison function to determine if element found
- *
- * Return: integer representing index of element found in array
+ * int_index - searches for an integer
+ * @array: input array
+ * @size: size of array
+ * @cmp: comparison function
+ * Return: index of integer found in cmp
  */
 int int_index(int *array, int size, int (*cmp)(int))
 {
-int i = 0;
-if (size <= 0)
-return (-1);
-if (array == NULL || cmp == NULL)
-return (-1);
-while (i < size)
-{
+int i;
+
+if (size > 0 && cmp && size && array)
+for (i = 0; i <= size; i++)
 if (cmp(array[i]))
-return (i);
-i++;
-}
+return (i
 return (-1);
+
 }
