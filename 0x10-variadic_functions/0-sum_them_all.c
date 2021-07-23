@@ -6,7 +6,7 @@
  *
  * Return: Result of adding the numbers or 0 if no arguments was passed
  */
-int sum_them_all(const unsigned int n, ...)
+int sum_them_all(int n, ...)
 {
 unsigned int i = 0, sum = 0;
 va_list ap;
@@ -20,7 +20,7 @@ return (0);
 
 for (i = 0; i < n; i++)
 {
-sum += va_arg(ap, const unsigned int);
+sum += va_arg(ap, int);
 }
 va_end(ap);
 return (sum);
