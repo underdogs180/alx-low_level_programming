@@ -1,30 +1,61 @@
 #include "lists.h"
+#include <stdlib.h>
 #include <stdio.h>
-/**
- * print_listint_safe - prints the elements in linked list
- * @h: head of listint_t type
- *
- * Return: size_t, number of nodes. Exits with 98 on failure
- */
-size_t print_listint_safe(const listint_t *h)
-{
-size_t n_nodes = 0;
-const listint_t *temp_h = NULL, *loop_node = NULL;
 
-temp_h = h;
-if (!h)
-exit(98);
-while (temp_h)
+/**
+ * _r - reallocates memory for an array of pointers
+ * to the nodes in a linked list
+ * @list: the old list to append
+ * @size: size of the new list (always one more than the old list)
+ * @new: new node to add to the list
+ *
+ * Return: pointer to the new list
+ */
+const listint_t **_r(const listint_t **list, size_t size, const listint_t *new)
 {
-if (h->next == temp_h && n_nodes > 2)
+const listint_t **newlist;
+size_t i;
+
+newlist = malloc(size * sizeof(listint_t *));
+if (newlist == NULL)
 {
-loop_node = temp_h;
-printf("loop node: [%p] %d\n", (void *)loop_node, loop_node->n);
+free(list);
 exit(98);
 }
-printf("[%p] %d\n", (void *)temp_h, temp_h->n);
-temp_h = temp_h->next;
-n_nodes++;
+for (i = 0; i < size - 1; i++)
+newlist[i] = list[i];
+newlist[i] = new;
+free(list);
+return (newlist);
 }
-return (n_nodes);
+
+/**
+ * print_listint_safe - prints a listint_t linked list.
+ * @head: pointer to the start of the list
+ *
+ * Return: the number of nodes in the list
+ */
+size_t print_listint_safe(const listint_t *head)
+{
+size_t i, num = 0;
+const listint_t **list = NULL;
+
+while (head != NULL)
+{
+for (i = 0; i < num; i++)
+{
+if (head == list[i])
+{
+printf("-> [%p] %d\n", (void *)head, head->n);
+free(list);
+return (num);
+}
+}
+num++;
+list = _r(list, num, head);
+printf("[%p] %d\n", (void *)head, head->n);
+head = head->next;
+}
+free(list);
+return (num);
 }
