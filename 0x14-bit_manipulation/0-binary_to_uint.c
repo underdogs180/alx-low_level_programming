@@ -1,6 +1,6 @@
-#include "holberton.h" 
+#include "holberton.h"
+#include "main.h"
 #include <stdlib.h>
-
 /**
  * binary_to_uint - Convert a string representing a binary number to an
  * unsigned int decimal value
