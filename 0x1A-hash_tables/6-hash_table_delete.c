@@ -27,3 +27,4 @@ node = tmp;
 }
 free(head->array);
 free(head);
+}
